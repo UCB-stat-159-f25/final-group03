@@ -15,4 +15,3 @@ dependencies:
   - scikit-learn=1.7
   - scipy=1.16
   - pingouin=0.5
-  - finaltools

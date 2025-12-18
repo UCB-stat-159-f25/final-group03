@@ -190,7 +190,7 @@ def loadings(data):
         
         # add sign (i.e., direction) to dimension names
         signed_dims = [
-            f"{'+' if pca_loadings_df.loc[idx, comp] >= 0 else '-'}{idx}"
+            f"{'+' if data.loc[idx, comp] >= 0 else '-'}{idx}"
             for idx in top_idx
         ]
         
