@@ -1,5 +1,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCB-stat-159-f25/final-group03.git/HEAD?urlpath=%2Fdoc%2Ftree%2FREADME.md)
 
+[![DOI](https://zenodo.org/badge/1112548076.svg)](https://doi.org/10.5281/zenodo.17972233)
+
 # Final Project: Representation and Archetypes in Fictional Media
 
 This project uses data from the [Open Psychometrics "Which Character" Quiz](https://openpsychometrics.org/tests/characters/documentation/) to explore character types (and archetypes) in fictional media. Here is how to navigate this repository:
