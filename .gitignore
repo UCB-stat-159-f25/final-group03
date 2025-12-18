@@ -1,3 +1,6 @@
 # MyST build outputs
 _build
 *.egg-info/
+*.pdf
+!pdf_builds/
+!pdf_builds/*.pdf
