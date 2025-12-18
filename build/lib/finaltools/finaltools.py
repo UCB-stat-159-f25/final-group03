@@ -1,6 +1,10 @@
 """
 Implementation of functions used throughout final project (divided into helper functions and analysis functions).
 """
+## Checks
+import finaltools, inspect
+print(finaltools.__file__)
+print(sorted([x for x in dir(finaltools) if "cor" in x.lower()]))
 
 ### LIBRARIES ###
 import pandas as pd
@@ -13,8 +17,6 @@ import ipywidgets as widgets
 from IPython.display import display
 import random
 from sklearn.preprocessing import StandardScaler
-import pingouin as pg
-
 
 ### HELPER FUNCTIONS ###
 
@@ -138,10 +140,62 @@ def interactive_correlation(char_score_data, col_slice=slice(3, 465), default_n=
         default_n = widgets.fixed(default_n),
     )
 
+## --[[NOTEBOOK 2: Finding Associations]]-- ##
+
+def target_mode_of_correlations(data, target_dimensions=["straight_queer", "young_old", "masculine_feminine", "rich_poor"], mode="standard"):
+    '''
+    Given a dataframe, target_dimensions, and a mode [standard, pcorr], it returns a matrix that has the targets and the correlations.
+    '''
+    if mode == "standard":
+        corr_matrix = data.corr().round(2) # create the correlation matrix
+
+        target_corrs = {}
+        
+        for d in target_dimensions:
+            top_idx = corr_matrix[d].sort_values(key=abs, ascending=False).head(11).index # find the top 10 correlated dimensions
+            numbered_dims = [
+                f"{idx} ({corr_matrix[d][top_idx][idx]})" # add their correlation coefficients
+                for idx in top_idx
+            ]
+            
+            target_corrs[d] = numbered_dims
+        return target_corrs
+    elif mode == "pcorr":
+        pcorr_matrix = data.pcorr().round(2)
+
+        target_pcorrs = {}
+        
+        for d in target_dimensions:
+            top_idx = pcorr_matrix[d].sort_values(key=abs, ascending=False).head(11).index
+            numbered_dims = [
+                f"{idx} ({pcorr_matrix[d][top_idx][idx]})"
+                for idx in top_idx
+            ]
+            
+            target_pcorrs[d] = numbered_dims
+        return target_pcorrs
+    
 ## --[[NOTEBOOK 3: Identify Archtypes]]-- ##
 
-def llf(xx):
+def loadings(data):
     '''
-    Custom leaf label function used in Hierarchical Clustering Dendogram."
+    Given a data frame, returns a dictionary of the loadings for each PC.
     '''
-    return "{}".format(temp[xx])
+    loadings = {}
+    
+    for i in range(1, 16):
+        comp = f"PC{i}"
+        
+        # get top dimensions by absolute loading
+        top_idx = (data[comp].abs().sort_values(ascending=False).head(11).index
+        )
+        
+        # add sign (i.e., direction) to dimension names
+        signed_dims = [
+            f"{'+' if pca_loadings_df.loc[idx, comp] >= 0 else '-'}{idx}"
+            for idx in top_idx
+        ]
+        
+        loadings[comp] = signed_dims
+        
+    return loadings
