@@ -6,6 +6,12 @@
 
 This project uses data from the [Open Psychometrics "Which Character" Quiz](https://openpsychometrics.org/tests/characters/documentation/) to explore character types (and archetypes) in fictional media. Here is how to navigate this repository:
 
+### Local Set Up
+- In the terminal `cd final-group03`
+- Then run `make env` to set up your environment and `conda activate char_score_env`
+- Register the environment as a Jupyter kernel using `python -m ipykernel install --user --name=char_score_env --display-name="Python char_score_env"` to use for notebooks
+- `pip install .` to use the finaltools package and run `pytest` to make sure the tests pass
+
 ### Notebooks
 There are four notebooks:
 1. `1-intro_exploration.ipynb`provides an introduction to the data, cleans it, and explores it.
