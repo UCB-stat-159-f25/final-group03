@@ -11,6 +11,7 @@ This project uses data from the [Open Psychometrics "Which Character" Quiz](http
 - Then run `make env` to set up your environment and `conda activate char_score_env`
 - Register the environment as a Jupyter kernel using `python -m ipykernel install --user --name=char_score_env --display-name="Python char_score_env"` to use for notebooks
 - `pip install .` to use the finaltools package and run `pytest` to make sure the tests pass
+- `make all` to run all notebooks
 
 ### Notebooks
 There are four notebooks:
@@ -18,6 +19,8 @@ There are four notebooks:
 2. `2-finding_associations.ipynb` examines specific demographic characteristics of fictional characters.
 3. `3-identify_archtypes.ipynb`employs multiple dimension reduction and data clustering techniques to make sense of the full scope of the data.
 4. `main.ipynb` offers a narrative overview of this work.
+
+PDFs of these notebooks can be found in the `pdf_builds` folder.
 
 ### Data
 If you're curious about the data, it can all be found in the `data` directory, along with a codebook that explains the online quiz that provided this data.
